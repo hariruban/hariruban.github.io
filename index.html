@@ -117,6 +117,8 @@
 					<ul>
 					  <li>HTML</li>
 					  <li>CSS</li>
+					  <li>javascript</li>
+					  <li>react js</li>
 					</ul>
 				</div>
 
@@ -176,13 +178,27 @@
 					<a href="https://github.com/hariruban/H.M.S">GitHub Repository</a>
 				</div>
 				  
-				<div style="background-image: url('images/projects/load.jpg'); background-size: cover; background-position: center; padding: 20px;">
-					<h3>Loading...</h3>
-					<p>In Progress...</p>
+				<div style="background-image: url('images/projects/patient.jpeg'); background-size: cover; background-position: center; padding: 20px; margin-bottom: 20px; color:black;">
+					<h3>Patient Health Record Dashboard</h3>
+					<p>The Patient Health Record Dashboard is a data-driven web application built using Streamlit to help healthcare professionals analyze, monitor, and predict patient health conditions. This AI-powered dashboard provides real-time insights through interactive data visualizations and predictive analytics, improving patient care and decision-making.</p>
 					<p><strong>Technologies:</strong> Python, Streamlit</p>
-					<a href="https://github.com/hariruban/desktop-virtual-assistant">GitHub Repository</a>
+					<a href="https://github.com/hariruban/Patient_dashboard.git">GitHub Repository</a>
 				</div>
 				  
+				<div style="background-image: url('images/projects/itg.png'); background-size: cover; background-position: center; padding: 20px; margin-bottom: 20px;">
+					<h3>ITG4N&DA</h3>
+					<p>The Information Gathering Tool is a Python-based security and network reconnaissance application that consolidates multiple scanning and information-gathering utilities into a single interface. This tool allows cybersecurity professionals, ethical hackers, and network administrators to gather critical details about a target system, domain, or IP address using various command-line utilities.</p>
+					<p><strong>Technologies:</strong> Python, Kali Linux</p>
+					<a href="https://github.com/hariruban/itg.git">GitHub Repository</a>
+				</div>
+
+				<div style="background-image: url('images/projects/psts.jpg'); background-size: cover; background-position: center; padding: 20px; margin-bottom: 20px; color:azure; ">
+					<h3>Automated Pentesting tool</h3>
+					<p>In the rapidly evolving landscape of cybersecurity, ensuring the resilience of systems against potential threats has become a critical necessity. Manual penetration testing, while effective, is time-intensive and prone to human error. This project introduces an Automated Penetration Testing Tool, a comprehensive solution designed to simplify and accelerate the process of identifying vulnerabilities in web applications, networks, and systems.</p>
+					<p><strong>Technologies:</strong> Python, Kali Linux</p>
+					<a href="https://github.com/hariruban/PTST.git">GitHub Repository</a>
+				</div>
+
 			</article>
 			
 			
@@ -190,6 +206,13 @@
 			<article id="experience">
 				<h2 class="major">Experience</h2>
 				<!--<span class="image main"><img src="images/pic02.jpg" alt="" /></span>-->
+
+				<div class="experience-item">
+					<h3>Data Analytics Intern, HCL TECH</h3>
+					<img src="images/experience/hcl.png" alt="Tamil Nadu Cyber Crime Police" class="experience-icon">
+					<p>I successfully executed a real-time data analytics project at HCL Tech, focusing on extracting actionable insights to drive business decisions.</p>
+				</div>
+
 				<div class="experience-item">
 					<h3>Tamil Nadu Cyber Crime Police, Volunteer</h3>
 					<img src="images/experience/tncb.png" alt="Tamil Nadu Cyber Crime Police" class="experience-icon">
@@ -214,19 +237,19 @@
 			<!-- Contact -->
 			<article id="contact">
 				<h2 class="major">Contact</h2>
-				<form method="post" action="#">
+				<form id="contactForm">
 					<div class="fields">
 						<div class="field half">
 							<label for="name">Name</label>
-							<input type="text" name="name" id="name" />
+							<input type="text" name="name" id="name" required />
 						</div>
 						<div class="field half">
 							<label for="email">Email</label>
-							<input type="text" name="email" id="email" />
+							<input type="email" name="email" id="email" required />
 						</div>
 						<div class="field">
 							<label for="message">Message</label>
-							<textarea name="message" id="message" rows="4"></textarea>
+							<textarea name="message" id="message" rows="4" required></textarea>
 						</div>
 					</div>
 					<ul class="actions">
@@ -236,13 +259,41 @@
 					<div id="formFeedback" class="form-feedback"></div>
 				</form>
 				<ul class="icons">
-					
 					<li><a href="https://www.linkedin.com/in/hariruban/" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
 					<li><a href="https://github.com/hariruban" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
 				</ul>
 			</article>
 			
-
+			<script>
+			document.getElementById("contactForm").addEventListener("submit", function(event) {
+				event.preventDefault();
+			
+				var formData = {
+					name: document.getElementById("name").value,
+					email: document.getElementById("email").value,
+					message: document.getElementById("message").value
+				};
+			
+				fetch("https://docs.google.com/spreadsheets/d/15Dsy644_PH7OdgqviIBvPKHeEcon3G-8Zo9nMX6TvEE/edit?gid=0#gid=0", {
+					method: "POST",
+					headers: {
+						"Authorization": "Bearer YOUR_ACCESS_TOKEN",
+						"Content-Type": "application/json"
+					},
+					body: JSON.stringify({
+						values: [[new Date().toISOString(), formData.name, formData.email, formData.message]]
+					})
+				})
+				.then(response => response.json())
+				.then(data => {
+					document.getElementById("formFeedback").innerText = "Message sent successfully!";
+					document.getElementById("contactForm").reset();
+				})
+				.catch(error => {
+					document.getElementById("formFeedback").innerText = "Error sending message. Try again.";
+				});
+			});
+			</script>
 			<!-- Elements -->
 			
 
